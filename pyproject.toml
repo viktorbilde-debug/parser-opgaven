@@ -1,0 +1,19 @@
+[project]
+name = "parser-opgaven"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "viktorbilde-debug", email = "viktor.bilde@gmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "coverage>=7.16.1",
+]
+
+[project.scripts]
+parser-opgaven = "parser_opgaven:main"
+
+[build-system]
+requires = ["uv_build>=0.12.16,<0.13.0"]
+build-backend = "uv_build"
