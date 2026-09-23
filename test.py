@@ -1,5 +1,5 @@
 import unittest;
-from Parser2 import *;
+from Parser import *;
 parser=Parser()
 class Testclass(unittest.TestCase):
     def test_1line(self):

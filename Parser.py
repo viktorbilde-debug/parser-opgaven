@@ -52,7 +52,7 @@ class Parser:
     def __init__(self):
         pass
 
-    def parse(self, input:str,header=True,seperator=",",lineseperator=["\n","\r"]):
+    def parse(self, input:str,header=True,seperator=",",lineseperator=["\n","\r"], Json=False):
         list_data=splitlines(input,lineseperator)
         if header==True:
             head=splitBySeperator(list_data.pop(0),seperator)
@@ -60,10 +60,16 @@ class Parser:
             output=[]
             for i in list_data:
                 output.append(dictionary(i,head))
-            return jsonconv(output)
+            if Json==True:
+                return jsonconv(output)
+            else:
+                return output
         if header==False:
             output=[splitBySeperator(x,seperator) for x in list_data]
-            return jsonconv(output)
+            if Json==True:
+                return jsonconv(output)
+            else:
+                return output
 
 #Example using the method parser()
 
