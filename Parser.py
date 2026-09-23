@@ -45,28 +45,30 @@ def jsonconv(input):
 
 #Classes
 
-#Parser class. A class with no properties but a method "parse()" which takes 
-#a string as input and parse the string according to given specifications
-#and returns in Json format
+#Parser class. A class with properties being "header,seperator,lineseperator, Json" 
+# and a method "parse()" which takes 
+#a string as input and parse the string according to the properties
 class Parser:
-    def __init__(self):
-        pass
-
-    def parse(self, input:str,header=True,seperator=",",lineseperator=["\n","\r"], Json=False):
-        list_data=splitlines(input,lineseperator)
-        if header==True:
-            head=splitBySeperator(list_data.pop(0),seperator)
-            list_data=[splitBySeperator(x,seperator) for x in list_data]
+    def __init__(self,header=True,seperator=",",lineseperator=["\n","\r"], Json=False):
+        self.header=header
+        self.seperator=seperator
+        self.lineseperator=lineseperator
+        self.Json=Json
+    def parse(self,input:str):
+        list_data=splitlines(input,self.lineseperator)
+        if self.header==True:
+            head=splitBySeperator(list_data.pop(0),self.seperator)
+            list_data=[splitBySeperator(x,self.seperator) for x in list_data]
             output=[]
             for i in list_data:
                 output.append(dictionary(i,head))
-            if Json==True:
+            if self.Json==True:
                 return jsonconv(output)
             else:
                 return output
-        if header==False:
-            output=[splitBySeperator(x,seperator) for x in list_data]
-            if Json==True:
+        if self.header==False:
+            output=[splitBySeperator(x,self.seperator) for x in list_data]
+            if self.Json==True:
                 return jsonconv(output)
             else:
                 return output

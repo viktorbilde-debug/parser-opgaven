@@ -1,6 +1,7 @@
 import unittest;
 from Parser import *;
 parser=Parser()
+parser_no_header=Parser(header=False)
 class Testclass(unittest.TestCase):
     def test_1line(self):
         self.assertEqual(parser.parse("name,email,department,role,salary,start_date,office\nMarcus Chen,marcus.chen@example.com,Engineering,Senior Software Engineer,155000,2019-03-15,San Francisco"),
@@ -14,10 +15,10 @@ class Testclass(unittest.TestCase):
                           [{'name': 'Marcus Chen', 'email': 'marcus.chen@example.com', 'department': 'Engineering', 'role': 'Senior Software Engineer', 'salary': '155000', 'start_date': '2019-03-15', 'office': 'San Francisco'},
                             {'name': 'Priya Sharma', 'email': 'priya.sharma@example.com', 'department': 'Engineering', 'role': 'Staff Engineer', 'salary': '178000', 'start_date': '2019-06-01', 'office': 'San Francisco'}])
     def test_noheader(self):
-        self.assertEqual(parser.parse("Marcus Chen,marcus.chen@example.com,Engineering,Senior Software Engineer,155000,2019-03-15,San Francisco\nPriya Sharma,priya.sharma@example.com,Engineering,Staff Engineer,178000,2019-06-01,San Francisco",header=False),
+        self.assertEqual(parser_no_header.parse("Marcus Chen,marcus.chen@example.com,Engineering,Senior Software Engineer,155000,2019-03-15,San Francisco\nPriya Sharma,priya.sharma@example.com,Engineering,Staff Engineer,178000,2019-06-01,San Francisco"),
                           [['Marcus Chen', 'marcus.chen@example.com', 'Engineering', 'Senior Software Engineer', '155000', '2019-03-15', 'San Francisco'], ['Priya Sharma', 'priya.sharma@example.com', 'Engineering', 'Staff Engineer', '178000', '2019-06-01', 'San Francisco']])
     def test_quotation(self):
-        self.assertEqual(parser.parse("\"a ""\n a,b"" \",b\",\"\n b,h\"\n \"a\",\"b\"",header=False),[['"a \n a,b "', 'b","'], [' b', 'h"\n "a","b"']])
+        self.assertEqual(parser_no_header.parse("\"a ""\n a,b"" \",b\",\"\n b,h\"\n \"a\",\"b\""),[['"a \n a,b "', 'b","'], [' b', 'h"\n "a","b"']])
 if __name__ == "__main__":#pragma: no cover
     unittest.main()
 # For at lave covarage gå i terminal skrive .venv\Scripts\activate
