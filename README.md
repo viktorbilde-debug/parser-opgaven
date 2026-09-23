@@ -46,7 +46,7 @@ parser.parse(csv)
 - We get the output:\
 [{'name': 'Marcus Chen', 'email': 'marcus.chen@example.com', 'department': 'Engineering', 'role': 'Senior Software Engineer', 'salary': '155000', 'start_date': '2019-03-15', 'office': 'San Francisco'}]
 ## Help
-- Remember in the initialization of the object from the "Parser()" class to specify header to False or the lineseperator or general seperator or JSON to True if you dont have a header, have another lineseperator than "/n" or "/r" and/or have another general seperator than "," and/or want the output to be JSON formattet.
+- Remember in the initialization of the object from the "Parser()" class to specify header to False or the lineseperator or general seperator or JSON to True if you dont have a header, have another lineseperator than "\n" or "\r" and/or have another general seperator than "," and/or want the output to be JSON formattet.
 # Authors
 Viktor Lønberg Bilde \
 Mail: viktor.bilde@gmail.com

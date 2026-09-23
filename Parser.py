@@ -49,7 +49,7 @@ def jsonconv(input):
 # and a method "parse()" which takes 
 #a string as input and parse the string according to the properties
 class Parser:
-    def __init__(self,header=True,seperator=",",lineseperator=["\n","\r"], Json=False):
+    def __init__(self,header=True,seperator=",", lineseperator=["\n","\r"], Json=False):
         self.header=header
         self.seperator=seperator
         self.lineseperator=lineseperator
@@ -76,6 +76,6 @@ class Parser:
 #Example using the method parser()
 
 if __name__ == "__main__":
-    csv="name,email,department,role,salary,start_date,office\nMarcus Chen,marcus.chen@example.com,Engineering,Senior Software Engineer,155000,2019-03-15,San Francisco\nPriya Sharma,priya.sharma@example.com,Engineering,Staff Engineer,178000,2019-06-01,San Francisco"
+    csv="name,email\nMarcus Chen,marcus.chen@example.com\nPriya Sharma,priya.sharma@example.com"
     parser=Parser()
     print(parser.parse(csv))
