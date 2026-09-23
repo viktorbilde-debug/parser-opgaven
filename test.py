@@ -24,3 +24,4 @@ if __name__ == "__main__":#pragma: no cover
 #Skriv herefter covarage eller coverage report
 #Kan også lave covarage html og ind på index så jeg kan finde hvad de rikke kørte
 #husk at køre coverage run -m unittest discover inden
+#java -jar .\JetUML-win-3.10.jar for at køre jet uml   

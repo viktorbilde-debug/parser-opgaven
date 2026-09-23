@@ -1,5 +1,8 @@
-#Funktions
+#Importing packages
 import json
+#Functions
+
+#takes a string and split lines by the given list of seperators
 def splitlines(input:str,seperator:list):
     list_lines=[]
     counter=0
@@ -12,6 +15,7 @@ def splitlines(input:str,seperator:list):
             counter=i+1
     list_lines.append(input[counter:len(input)])
     return list_lines
+#takes a string and split the string by given seperator
 def splitBySeperator(input:str,seperator:str):
     list_info=[]
     counter=0
@@ -24,6 +28,8 @@ def splitBySeperator(input:str,seperator:str):
             counter=i+1
     list_info.append(input[counter:len(input)])
     return list_info
+#takes a input data list and a list which is the header of the data. Sorts the 
+#data and header in a dictionary. Keys=header, key values=data
 def dictionary(input:list,header:list):
     dictionary={}
     j=0
@@ -32,13 +38,16 @@ def dictionary(input:list,header:list):
             j+=1
     return dictionary
 
-#Json converter
-#def jsonconv(input):
-    #output=json.dumps(input)
-    #return output
+#Json converter. Converts input to Json format
+def jsonconv(input):
+    output=json.dumps(input)
+    return output
 
-#Class
+#Classes
 
+#Parser class. A class with no properties but a method "parse()" which takes 
+#a string as input and parse the string according to given specifications
+#and returns in Json format
 class Parser:
     def __init__(self):
         pass
@@ -51,26 +60,14 @@ class Parser:
             output=[]
             for i in list_data:
                 output.append(dictionary(i,head))
-            return output
+            return jsonconv(output)
         if header==False:
             output=[splitBySeperator(x,seperator) for x in list_data]
-            return output
+            return jsonconv(output)
 
-#"name,email,department,role,salary,start_date,office\nMarcus Chen,marcus.chen@example.com,Engineering,Senior Software Engineer,155000,2019-03-15,San Francisco\nPriya Sharma,priya.sharma@example.com,Engineering,Staff Engineer,178000,2019-06-01,San Francisco"
-#if __name__ == "__main__":
-    #parser=Parser()
-    #print(parser.parse("a,b,c\n a,b,c",header=False))
-    #print(parser.parse("\"a\",\"b\",\"c\"\n \"a\", \"b\", \"c\"",header=False))
-    #print(parser.parse("\"a ""\n a,b"" \",b\",\"\n b,h\"\n \"a\",\"b\"",header=False))
-    #print("a", "b") == print(a,b)
-    #csv=input("Enter your string or file: ")
-    #header=input("Do you have a header in your file? yes/no ")
-    #lineseperator=input("what are you lineseperators?")
-    #seperator=input("what are you seperator of columns?")
-    #if header=="yes":
-        #header=True
-        #print(parser.parse(csv,header=header))
-    #if header=="no":
-        #header=False
-        #print(parser.parse(csv,header=header))
-    #print(jsonconv(parsed)
+#Example using the method parser()
+
+if __name__ == "__main__":
+    csv="name,email,department,role,salary,start_date,office\nMarcus Chen,marcus.chen@example.com,Engineering,Senior Software Engineer,155000,2019-03-15,San Francisco\nPriya Sharma,priya.sharma@example.com,Engineering,Staff Engineer,178000,2019-06-01,San Francisco"
+    parser=Parser()
+    print(parser.parse(csv))
