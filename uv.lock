@@ -79,5 +79,13 @@ dependencies = [
     { name = "coverage" },
 ]
 
+[package.dev-dependencies]
+dev = [
+    { name = "coverage" },
+]
+
 [package.metadata]
 requires-dist = [{ name = "coverage", specifier = ">=7.16.1" }]
+
+[package.metadata.requires-dev]
+dev = [{ name = "coverage", specifier = ">=7.16.1" }]
