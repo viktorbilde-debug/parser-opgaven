@@ -79,5 +79,3 @@ if __name__ == "__main__":#pragma: no cover
     csv="name,email\nMarcus Chen,marcus.chen@example.com\nPriya Sharma,priya.sharma@example.com"
     parser=Parser()
     print(parser.parse(csv))
-    parser_JSON=Parser(Json=True)
-    print(parser_JSON.parse("name,email\nMarcus Chen,marcus.chen@example.com\nPriya Sharma,priya.sharma@example.com"))
